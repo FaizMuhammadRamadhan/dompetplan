@@ -6,21 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::create('dompet', function (Blueprint $table) {
+        Schema::create('master_dompet', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pengguna_id')
-                  ->constrained('pengguna')
-                  ->onDelete('cascade');
-            $table->string('nama_dompet', 50); 
-            $table->string('jenis_dompet', 20);
+            $table->string('nama_dompet', 50);
             $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('dompet');
+        Schema::dropIfExists('master_dompet');
     }
 };

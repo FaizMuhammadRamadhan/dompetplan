@@ -13,39 +13,34 @@ class Pengguna extends Authenticatable
 
     protected $fillable = [
         'nama',
-        'email',
-        'kata_sandi',
+        'username',
+        'password',
     ];
 
     protected $hidden = [
-        'kata_sandi',
+        'password',
     ];
 
-    // Relasi ke Dompet
     public function dompet()
     {
         return $this->hasMany(Dompet::class, 'pengguna_id');
     }
 
-    // Relasi ke Transaksi
     public function transaksi()
     {
         return $this->hasMany(Transaksi::class, 'pengguna_id');
     }
 
-    // Relasi ke Tanggungan
     public function tanggungan()
     {
         return $this->hasMany(Tanggungan::class, 'pengguna_id');
     }
 
-    // Relasi ke Target
     public function target()
     {
         return $this->hasMany(Target::class, 'pengguna_id');
     }
 
-    // Relasi ke Tabungan Target
     public function tabunganTarget()
     {
         return $this->hasMany(TabunganTarget::class, 'pengguna_id');

@@ -6,22 +6,26 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::create('target', function (Blueprint $table) {
+        Schema::create('master_target', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pengguna_id')
-                  ->constrained('pengguna')
-                  ->onDelete('cascade');
             $table->string('nama_target', 100);
-            $table->decimal('jumlah_target', 15, 2);
-            $table->date('tanggal_target');
+            $table->integer('nominal_target');
+            $table->date('tanggal_mulai');
+            $table->date('tanggal_berakhir');
             $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('target');
+        Schema::dropIfExists('master_target');
     }
 };
