@@ -1,11 +1,79 @@
 @import 'tailwindcss';
 
+/* Source scanning untuk purge (agar CSS Tailwind tidak kepotong) */
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
+/* === Theme Fonts === */
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Inter', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* === Body & Global === */
+body {
+    font-family: var(--font-sans);
+    background-color: #f8f9fa;
+}
+
+/* Smooth transition untuk semua */
+* {
+    transition: all 0.2s ease-in-out;
+}
+
+/* === Sidebar === */
+.sidebar {
+    width: 280px;
+    background: #fff;
+    border-right: 1px solid #e5e7eb;
+    padding: 1.5rem 1rem;
+    transition: all 0.3s ease-in-out;
+}
+.sidebar.collapsed {
+    width: 80px;
+    padding: 1.5rem 0.5rem;
+}
+.sidebar .brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #4338ca;
+    margin-bottom: 2rem;
+    white-space: nowrap;
+    transition: opacity 0.3s;
+}
+.sidebar.collapsed .brand {
+    opacity: 0;
+}
+.sidebar .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    color: #374151;
+    border-radius: 0.5rem;
+    white-space: nowrap;
+}
+.sidebar .nav-link i {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+.sidebar.collapsed .nav-link span {
+    display: none;
+}
+.sidebar .nav-link.active {
+    background: #e0e7ff;
+    color: #4338ca;
+    font-weight: 600;
+}
+.sidebar .nav-link:hover {
+    background: #f3f4f6;
+    color: #4338ca;
+}
+
+/* === Navbar === */
+.navbar {
+    border-bottom: 1px solid #e5e7eb;
 }

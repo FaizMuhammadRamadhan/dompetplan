@@ -123,9 +123,6 @@
 </div>
                 
 
-{{-- SweetAlert2 --}}
-<script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
-
 {{-- Sidebar Toggle --}}
 <script>
     document.getElementById('toggleSidebar').addEventListener('click', function () {
